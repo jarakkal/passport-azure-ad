@@ -52,7 +52,7 @@ var client = new azureKeyVault.KeyVaultClient(credentials);
 var vaultUri = 'https://ADALTestInfo.vault.azure.net';
 
 // The secrets we want to get from the key vault
-var v1_v2_kv_name = 'MSIDLAB5-manNonMFA1';
+var v1_v2_kv_name = 'fednonmfa1';
 var v1_v2_password;
 var b2c_kv_name = 'PassportB2C-lsj31415926atgmaildotcom';
 var b2c_password;
@@ -72,7 +72,7 @@ exports.set_test_parameters = (callback) => {
 
   async.waterfall([
     (next) => {
-      client.getSecret(vaultUri + '/secrets/' + v1_v2_kv_name, function (err, result) {
+      client.getSecret('https://msidlab5.vault.azure.net/secrets/' + v1_v2_kv_name, function (err, result) {
         if (err) throw err;
         v1_v2_password = result.value;
         return next();
