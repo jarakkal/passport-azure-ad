@@ -72,7 +72,7 @@ exports.set_test_parameters = (callback) => {
 
   async.waterfall([
     (next) => {
-      client.getSecret('https://msidlab5.vault.azure.net/secrets/' + v1_v2_kv_name, function (err, result) {
+      client.getSecret('https://msidlab5.vault.azure.net/secrets/fedNonMFA1', function (err, result) {
         if (err) throw err;
         v1_v2_password = result.value;
         return next();
